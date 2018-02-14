@@ -1,0 +1,7 @@
+#+TITLE:	README for winc1500-updater
+#+AUTHOR:	Jacob Lewallen
+#+EMAIL:	jacob@conservify.org
+
+* Overview
+
+This repository bundles the firmware updating firmware and the tool to upload the the firmware into an easier to use pipeline.
