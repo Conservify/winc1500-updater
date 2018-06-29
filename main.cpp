@@ -91,7 +91,37 @@ void testVersion() {
 void setup() {
     Serial.begin(115200);
 
-    WiFi.setPins(7, 9, 10, 11);
+    #ifdef FK_NATURALIST
+    static constexpr uint8_t WIFI_PIN_CS = 7;
+    static constexpr uint8_t WIFI_PIN_IRQ = 16;
+    static constexpr uint8_t WIFI_PIN_RST = 15;
+    static constexpr uint8_t WIFI_PIN_EN = 38;
+    #endif
+
+    #ifdef FK_CORE
+    static constexpr uint8_t WIFI_PIN_CS = 7;
+    static constexpr uint8_t WIFI_PIN_IRQ = 9;
+    static constexpr uint8_t WIFI_PIN_RST = 10;
+    static constexpr uint8_t WIFI_PIN_EN = 11;
+    #endif
+
+    #ifdef ADAFRUIT_FEATHER
+    static constexpr uint8_t WIFI_PIN_CS = 8;
+    static constexpr uint8_t WIFI_PIN_IRQ = 7;
+    static constexpr uint8_t WIFI_PIN_RST = 4;
+    static constexpr uint8_t WIFI_PIN_EN = 2;
+    #endif
+
+    WiFi.setPins(WIFI_PIN_CS, WIFI_PIN_IRQ, WIFI_PIN_RST, WIFI_PIN_EN);
+    if (WiFi.status() == WL_NO_SHIELD) {
+        pinMode(13, OUTPUT);
+        while (true) {
+            delay(100);
+            digitalWrite(13, HIGH);
+            delay(100);
+            digitalWrite(13, LOW);
+        }
+    }
 
     while (!Serial && millis() < 2000) {
 
