@@ -1,5 +1,7 @@
 all: default Wifi101_FirmwareUpdater
 
+deps: Wifi101_FirmwareUpdater
+
 Wifi101_FirmwareUpdater: Wifi101_FirmwareUpdater_linux64.zip
 	unzip Wifi101_FirmwareUpdater_linux64.zip
 
