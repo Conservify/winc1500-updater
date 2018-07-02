@@ -8,10 +8,13 @@ Wifi101_FirmwareUpdater: Wifi101_FirmwareUpdater_linux64.zip
 Wifi101_FirmwareUpdater_linux64.zip:
 	wget https://github.com/arduino-libraries/WiFi101-FirmwareUpdater/releases/download/0.7.0/Wifi101_FirmwareUpdater_linux64.zip
 
-default:
+default: gitdeps
 	mkdir -p build
 	cd build && cmake ../
 	cd build && make
+
+gitdeps:
+	simple-deps --config arduino-libraries
 
 clean:
 	rm -rf build

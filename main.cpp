@@ -85,7 +85,6 @@ void testVersion() {
         Serial.println("   version required by the library, you may experience");
         Serial.println("   issues or failures.");
     }
-
 }
 
 void setup() {
@@ -124,7 +123,6 @@ void setup() {
     }
 
     while (!Serial && millis() < 2000) {
-
     }
 
     if (Serial) {
